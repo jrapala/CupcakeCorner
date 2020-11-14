@@ -23,6 +23,7 @@ struct AddressView: View {
                 NavigationLink(destination: CheckoutView(order: order)) {
                     Text("Check out")
                 }
+                .disabled(order.hasValidAddress == false)
             }
         }
         .navigationBarTitle("Delivery details", displayMode: .inline)
