@@ -7,10 +7,7 @@
 
 import Foundation
 
-// Swift doesn't understand how to encode and decode published properties
-// Therefore, we must add Codable conformance by hand by telling Swift how to
-// ebcide abd decode JSON to Swift data (and back)
-// Follow steps 1-4
+// @ObservedObjects must be classes
 class Order: ObservableObject, Codable {
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     
@@ -32,6 +29,11 @@ class Order: ObservableObject, Codable {
     @Published var streetAddress = ""
     @Published var city = ""
     @Published var zip = ""
+    
+    // Swift doesn't understand how to encode and decode published properties
+    // Therefore, we must add Codable conformance by hand by telling Swift how to
+    // encode and decode JSON to Swift data (and back)
+    // Follow steps 1-4
 
     // 1. Add enum for Published properties
     enum CodingKeys: CodingKey  {
